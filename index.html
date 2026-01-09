@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolo Straordinario - App per il Calcolo degli Straordinari</title>
+    <meta name="description" content="Calcolo Straordinario - L'app più semplice per tracciare orari di lavoro e calcolare automaticamente gli straordinari. Backup locale, privacy totale, interfaccia intuitiva.">
+    <meta name="keywords" content="calcolo straordinario, ore lavoro, timesheet, overtime calculator, orari lavoro, straordinari, app lavoro">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 2rem 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #f0f8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav a {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            margin: 2rem 0;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            padding: 3rem 2rem;
+        }
+        
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .setup-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .step {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border-top: 4px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+        
+        .download-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .download-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            margin: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .download-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .app-ads-txt {
+            display: none;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e9ecef;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pricing-card.premium {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+        }
+        
+        .premium-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-header h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-subtitle {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .pricing-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features i.fa-check {
+            color: #28a745;
+        }
+        
+        .pricing-features i.fa-ad {
+            color: #ffc107;
+        }
+        
+        .pricing-limitation {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .premium-feature {
+            font-weight: 500;
+        }
+        
+        .premium-feature i {
+            color: #667eea;
+        }
+        
+        .pricing-info {
+            margin-top: 3rem;
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .info-box h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-box li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .info-box li:before {
+            content: '•';
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .nav {
+                gap: 0.5rem;
+            }
+            
+            .nav a {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .pricing-card {
+                padding: 1.5rem;
+            }
+            
+            .price {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="hero">
+                <h1><i class="fas fa-clock"></i> Calcolo Straordinario</h1>
+                <p>L'app più semplice per tracciare orari di lavoro e calcolare automaticamente gli straordinari</p>
+                <nav class="nav">
+                    <a href="#features"><i class="fas fa-star"></i> Funzionalità</a>
+                    <a href="#pricing"><i class="fas fa-tags"></i> Prezzi</a>
+                    <a href="setup.html"><i class="fas fa-cog"></i> Guida Setup</a>
+                    <a href="privacy-policy.html"><i class="fas fa-shield-alt"></i> Privacy</a>
+                    <a href="terms-of-service.html"><i class="fas fa-file-contract"></i> Termini</a>
+                    <a href="#download"><i class="fas fa-download"></i> Download</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section id="overview" class="section">
+                <h2><i class="fas fa-rocket"></i> Perché Scegliere Calcolo Straordinario?</h2>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">
+                    Con un setup iniziale di pochi minuti, potrai registrare entrata e uscita con un solo click! 
+                    L'app calcola automaticamente ore lavorate, straordinari, buoni pasto e guadagni extra.
+                </p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">Click per registrare<br>entrata/uscita</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">30</div>
+                        <div class="stat-label">Minuti di pausa pranzo<br>automatica</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Calcolo automatico<br>straordinari</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">7</div>
+                        <div class="stat-label">Giorni settimana<br>configurabili</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="features" class="section">
+                <h2><i class="fas fa-magic"></i> Funzionalità Principali</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                        <h3>Calcolo Automatico Straordinari</h3>
+                        <p>Inserisci entrata e uscita, l'app calcola automaticamente ore lavorate, straordinari e guadagni extra secondo le tue impostazioni contrattuali.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
+                        <h3>Registrazione Rapida</h3>
+                        <p>Un click imposta l'ora corrente, due click per modificare manualmente. Perfetto per registrare in tempo reale quando entri/esci dal lavoro.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+                        <h3>Buono Pasto Intelligente</h3>
+                        <p>Configura le soglie e l'app ti dirà automaticamente se hai diritto al buono pasto. Include calcolo automatico pause pranzo.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-copy"></i></div>
+                        <h3>Copia e Incolla Dati</h3>
+                        <p>Orari fissi? Copia un giorno e incollalo sui successivi. Imposta un'intera settimana in 30 secondi!</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-sticky-note"></i></div>
+                        <h3>Sistema Ferie Avanzato</h3>
+                        <p>Gestione completa di ferie e permessi con tipi personalizzabili (matrimonio, permessi brevi, ferie ordinarie, ecc.). Statistiche automatiche per periodo con calcolo dinamico giorni/ore utilizzati. Protezione tipi speciali e supporto permessi a ore.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-database"></i></div>
+                        <h3>Sistema Backup Locale</h3>
+                        <p>Backup completo offline con retention automatica. Include tipi ferie personalizzati e statistiche. Condividi dati via email, cloud o WhatsApp per cambio dispositivo.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Statistiche e Grafici</h3>
+                        <p>Analisi mensili automatiche con grafici delle ore lavorate e straordinari. Obiettivi personalizzabili.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-file-export"></i></div>
+                        <h3>Esportazione Dati Completa</h3>
+                        <p>Genera report mensili in PDF o CSV per commercialisti, HR o archivio personale. Include dettagli su tipi ferie utilizzati, ore personalizzate e statistiche complete. Tutto professionale e dettagliato.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
+                        <h3>Gestione Dati Personali</h3>
+                        <p>Controllo totale sui tuoi dati: elimina selettivamente solo i dati utente, le impostazioni o entrambi. Sistema sicuro con conferme multiple.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="smart-features" class="section">
+                <h2><i class="fas fa-brain"></i> Funzionalità Intelligenti</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-mouse-pointer"></i></div>
+                        <h3>Click Intelligenti</h3>
+                        <ul style="text-align: left; margin-top: 1rem;">
+                            <li><strong>Primo click:</strong> Imposta ora corrente automaticamente</li>
+                            <li><strong>Secondo click:</strong> Permette modifica manuale</li>
+                            <li><strong>Click "Uscita":</strong> Aggiunge automaticamente 30 min pausa pranzo se hai diritto al buono pasto</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+                        <h3>Opzioni Avanzate</h3>
+                        <ul style="text-align: left; margin-top: 1rem;">
+                            <li><strong>Filtra orario inizio:</strong> Ignora arrivi anticipati</li>
+                            <li><strong>Soglia straordinario:</strong> Tolleranze contrattuali (es: primi 15 min gratis)</li>
+                            <li><strong>Calcoli precisi:</strong> Anche con situazioni complesse</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-magic"></i></div>
+                        <h3>Automazioni Intelligenti</h3>
+                        <ul style="text-align: left; margin-top: 1rem;">
+                            <li><strong>Buono pasto automatico:</strong> Riconoscimento diritto e calcolo pausa</li>
+                            <li><strong>Ferie dinamiche:</strong> Statistiche auto-aggiornate per periodo</li>
+                            <li><strong>Backup retention:</strong> Mantiene automaticamente ultimi 7 backup</li>
+                            <li><strong>Calcoli in tempo reale:</strong> Tutto aggiornato istantaneamente</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-umbrella-beach"></i></div>
+                        <h3>Sistema Ferie Avanzato v1.2.0</h3>
+                        <ul style="text-align: left; margin-top: 1rem;">
+                            <li><strong>Tipi personalizzabili:</strong> Crea i tuoi tipi di ferie/permessi</li>
+                            <li><strong>Preset predefiniti:</strong> Matrimonio, permessi brevi, ordinarie</li>
+                            <li><strong>Permessi a ore:</strong> Gestione permessi orari personalizzati</li>
+                            <li><strong>Statistiche dinamiche:</strong> Conteggi automatici per anno/mese</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Privacy e Sicurezza</h3>
+                        <ul style="text-align: left; margin-top: 1rem;">
+                            <li><strong>Eliminazione selettiva:</strong> Scegli cosa eliminare (dati/impostazioni)</li>
+                            <li><strong>Conferme multiple:</strong> Protezione contro cancellazioni accidentali</li>
+                            <li><strong>Controllo totale:</strong> I tuoi dati rimangono sempre tuoi</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="setup-preview" class="section">
+                <h2><i class="fas fa-rocket"></i> Setup Rapido</h2>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">
+                    Configura l'app in 5 minuti seguendo l'ordine del menu Impostazioni:
+                </p>
+                
+                <div class="setup-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Orario di Lavoro</h3>
+                        <p><strong>OBBLIGATORIO:</strong> Imposta ore contrattuali per ogni giorno (es: 8h Lun-Ven, 0h weekend)</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Opzioni Avanzate</h3>
+                        <p><strong>OPZIONALE:</strong> Solo per esigenze particolari (filtra orario, soglie straordinario)</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Buono Pasto</h3>
+                        <p><strong>SE APPLICABILE:</strong> Attiva e imposta soglia maturazione (solitamente 6 ore)</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Importo Straordinario</h3>
+                        <p><strong>SE INTERESSATO:</strong> Tariffa oraria per calcolare guadagni extra</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <h3>Gestione Dati</h3>
+                        <p><strong>PER PRIVACY:</strong> Controllo eliminazione dati utente, impostazioni o reset completo</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="setup.html" class="download-button">
+                        <i class="fas fa-book"></i> Guida Completa Setup
+                    </a>
+                </div>
+            </section>
+
+            <section id="backup-system" class="section">
+                <h2><i class="fas fa-database"></i> Sistema Backup Avanzato</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-cog"></i></div>
+                        <h3>Backup Impostazioni</h3>
+                        <p><strong>~2-5 KB:</strong> Orari lavoro, soglie, buono pasto, tema. Perfetto prima di modifiche importanti.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <h3>Backup Dati</h3>
+                        <p><strong>10-100 KB:</strong> Tutti i giorni lavorativi, note, allegati. Backup periodico del tuo lavoro.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-archive"></i></div>
+                        <h3>Backup Completo</h3>
+                        <p><strong>15-105 KB:</strong> Tutto insieme. Ideale per cambio dispositivo o backup di sicurezza totale.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-user-times"></i></div>
+                        <h3>Eliminazione Dati</h3>
+                        <p><strong>Controllo totale:</strong> Elimina selettivamente dati utente, impostazioni o reset completo. Sempre con conferme di sicurezza.</p>
+                    </div>
+                </div>
+
+                <h3 style="text-align: center; margin: 2rem 0; color: #667eea;">Condivisione Multi-Piattaforma</h3>
+                <div style="text-align: center;">
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+                        <i class="fas fa-envelope"></i> Email &nbsp;&nbsp;
+                        <i class="fas fa-cloud"></i> Google Drive &nbsp;&nbsp;
+                        <i class="fab fa-whatsapp"></i> WhatsApp &nbsp;&nbsp;
+                        <i class="fas fa-bluetooth-b"></i> Bluetooth &nbsp;&nbsp;
+                        <i class="fas fa-wifi"></i> WiFi Direct
+                    </p>
+                    <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0;">
+                        <p><strong><i class="fas fa-user-shield"></i> Privacy e Controllo Dati:</strong></p>
+                        <p style="margin: 0.5rem 0;"><strong>✓ Tutto locale:</strong> Nessun server esterno, i tuoi dati rimangono solo sul tuo dispositivo</p>
+                        <p style="margin: 0.5rem 0;"><strong>✓ Controllo totale:</strong> Elimina selettivamente dati utente, impostazioni o reset completo</p>
+                        <p style="margin: 0.5rem 0;"><strong>✓ Sicurezza garantita:</strong> Conferme multiple per prevenire cancellazioni accidentali</p>
+                        <p style="margin: 0.5rem 0;"><strong>✓ Trasparenza completa:</strong> Sai sempre cosa viene conservato o eliminato</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="pricing" class="section">
+                <h2><i class="fas fa-tags"></i> Scegli la Tua Modalità Gratuita</h2>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">
+                    Calcolo Straordinario offre due modalità di utilizzo completamente gratuite
+                </p>
+                
+                <div class="pricing-grid">
+                    <div class="pricing-card premium">
+                        <div class="premium-badge">
+                            <i class="fas fa-star"></i> SUPPORTA LO SVILUPPO
+                        </div>
+                        <div class="pricing-header">
+                            <h3><i class="fas fa-chart-line"></i> Con Annunci Personalizzati</h3>
+                            <div class="price">€0</div>
+                            <p class="price-subtitle">Gratuita</p>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Tutte le funzionalità complete</li>
+                                <li><i class="fas fa-check"></i> Calcolo automatico straordinari</li>
+                                <li><i class="fas fa-check"></i> Sistema backup locale</li>
+                                <li><i class="fas fa-check"></i> Export dati (PDF/CSV)</li>
+                                <li class="premium-feature"><i class="fas fa-heart"></i> <strong>Supporta lo sviluppatore</strong></li>
+                                <li class="pricing-limitation"><i class="fas fa-ad"></i> Annunci personalizzati basati sui tuoi interessi</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3><i class="fas fa-chart-bar"></i> Con Annunci Non Personalizzati</h3>
+                            <div class="price">€0</div>
+                            <p class="price-subtitle">Gratuita</p>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Tutte le funzionalità complete</li>
+                                <li><i class="fas fa-check"></i> Calcolo automatico straordinari</li>
+                                <li><i class="fas fa-check"></i> Sistema backup locale</li>
+                                <li><i class="fas fa-check"></i> Export dati (PDF/CSV)</li>
+                                <li class="premium-feature"><i class="fas fa-shield-alt"></i> <strong>Raccolta dati limitata</strong></li>
+                                <li class="pricing-limitation"><i class="fas fa-ad"></i> Annunci generici non personalizzati</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pricing-info">
+                    <div class="info-box">
+                        <h4><i class="fas fa-info-circle"></i> Informazioni Importanti</h4>
+                        <ul>
+                            <li><strong>Funzionalità identiche:</strong> Entrambe le modalità offrono le stesse potenti funzionalità di calcolo</li>
+                            <li><strong>Scelta libera:</strong> Puoi cambiare modalità in qualsiasi momento nelle impostazioni dell'app</li>
+                            <li><strong>Sempre gratuita:</strong> Entrambe le modalità sono completamente gratuite, per sempre</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <section id="download" class="download-section">
+        <div class="container">
+            <h2><i class="fas fa-download"></i> Scarica Ora</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                Inizia subito a tracciare i tuoi orari di lavoro con la massima semplicità, privacy e controllo totale sui tuoi dati
+            </p>
+            
+            <div>
+                <a href="https://play.google.com/store/apps/details?id=com.calcolostraordinario.app&hl=it" class="download-button" target="_blank">
+                    <i class="fab fa-google-play"></i> Google Play Store
+                </a>
+            </div>
+            
+            <p style="margin-top: 2rem; opacity: 0.8;">
+                <i class="fas fa-chart-line"></i> Annunci Personalizzati • <i class="fas fa-chart-bar"></i> Annunci Non Personalizzati • <i class="fas fa-wifi-off"></i> Funziona Offline
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Calcolo Straordinario - Sviluppata da Antonio Rota</p>
+            <p>
+                <a href="mailto:appdevmond@gmail.com" style="color: #ccc;">
+                    <i class="fas fa-envelope"></i> appdevmond@gmail.com
+                </a> • 
+                <a href="privacy-policy.html" style="color: #ccc;">Privacy Policy</a> •
+                <a href="terms-of-service.html" style="color: #ccc;">Termini di Servizio</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- app-ads.txt content for AdMob verification -->
+    <div class="app-ads-txt">
+        google.com, pub-1187208580069065, DIRECT, f08c47fec0942fa0
+    </div>
+</body>
+</html>

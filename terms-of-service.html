@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termini di Servizio - Calcolo Straordinario</title>
+    <meta name="description" content="Termini di Servizio di Calcolo Straordinario. Condizioni d'uso, limitazioni, licenza e responsabilità per le versioni gratuite.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 2rem 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #f0f8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section h3 {
+            color: #555;
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.8rem 0;
+        }
+        
+        .section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .section ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+        }
+        
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .warning-box .icon {
+            color: #ff9800;
+            margin-right: 0.5rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .info-card h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .back-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            margin: 2rem 0;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+            
+            .section h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="hero">
+                <h1><i class="fas fa-gavel"></i> Termini di Servizio</h1>
+                <p>Condizioni d'uso per l'applicazione Calcolo Straordinario</p>
+                <p><strong>Ultimo aggiornamento:</strong> 11 Agosto 2025</p>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="warning-box">
+                <i class="fas fa-exclamation-triangle icon"></i>
+                <strong>Importante:</strong> Leggere attentamente questi termini prima di utilizzare l'app.
+            </div>
+
+            <div class="section">
+                <h2><i class="fas fa-info-circle"></i> 1. Introduzione</h2>
+                <p>I presenti Termini di Servizio regolano l'utilizzo dell'applicazione mobile "Calcolo Straordinario", sviluppata da Antonio Rota (persona fisica), disponibile gratuitamente con due modalità: con annunci personalizzati o con annunci non personalizzati.</p>
+                <p>Utilizzando l'app, accetti integralmente questi termini. Se non accetti questi termini, non utilizzare l'applicazione.</p>
+            </div>
+
+            <div class="section">
+                <h2><i class="fas fa-user"></i> 2. Titolare del Servizio</h2>
+                <div class="info-card">
+                    <h4>Sviluppatore</h4>
+                    <p><strong>Antonio Rota</strong> (persona fisica)<br>
+                    Mondragone, Italia<br>
+                    Email: appdevmond@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><i class="fas fa-key"></i> 3. Licenza d'Uso</h2>
+                <p>L'utilizzo dell'app ti concede una <strong>licenza d'uso non esclusiva, non trasferibile e revocabile</strong> per utilizzare "Calcolo Straordinario" sui tuoi dispositivi personali.</p>
+                
+                <h3>Cosa puoi fare:</h3>
+                <ul>
+                    <li>Utilizzare l'app per scopi personali e professionali</li>
+                    <li>Installare l'app su dispositivi di tua proprietà</li>
+                    <li>Utilizzare tutte le funzionalità disponibili nella versione scelta</li>
+                </ul>
+                
+                <h3>Cosa NON puoi fare:</h3>
+                <ul>
+                    <li>Condividere, rivendere o distribuire l'app</li>
+                    <li>Modificare, decompilare o reverse engineering</li>
+                    <li>Utilizzare l'app per scopi illegali</li>
+                    <li>Violare i diritti di proprietà intellettuale</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><i class="fas fa-mobile-alt"></i> 4. Modalità di Utilizzo</h2>
+                
+                <div class="highlight-box">
+                    <h3><i class="fas fa-free-code-camp"></i> Due Versioni Gratuite Disponibili</h3>
+                    <p>L'app offre due modalità di utilizzo completamente gratuite, ciascuna con diverse implicazioni sulla raccolta dati per la pubblicità.</p>
+                </div>
+                
+                <h3>Modalità disponibili:</h3>
+                <ul>
+                    <li><strong>Con annunci personalizzati:</strong> Annunci basati sui tuoi interessi, supporta lo sviluppo dell'app</li>
+                    <li><strong>Con annunci non personalizzati:</strong> Annunci generici, raccolta dati limitata</li>
+                    <li><strong>Accesso completo:</strong> Entrambe le modalità offrono accesso completo a tutte le funzionalità</li>
+                    <li><strong>Scelta libera:</strong> Puoi cambiare modalità in qualsiasi momento</li>
+                </ul>
+                
+                <h3>Supporto e mantenimento:</h3>
+                <div class="info-card">
+                    <ul>
+                        <li><strong>Best-effort:</strong> Faremo il possibile per mantenere l'app aggiornata</li>
+                        <li><strong>Compatibilità:</strong> Supporto per versioni Android correnti</li>
+                        <li><strong>Dipendenze:</strong> L'app funziona tramite servizi Google (AdMob, Play Services)</li>
+                        <li><strong>Trasparenza:</strong> Cambiamenti significativi saranno comunicati con preavviso</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><i class="fas fa-shield-alt"></i> 5. Limitazione di Responsabilità</h2>
+                <p>L'app è fornita <strong>"così com'è"</strong> senza garanzie di alcun tipo, espresse o implicite.</p>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4><i class="fas fa-database"></i> Perdita Dati</h4>
+                        <p>Non siamo responsabili per eventuali perdite di dati. Ti consigliamo di effettuare backup regolari.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="fas fa-calculator"></i> Calcoli</h4>
+                        <p>L'uso dell'app per calcoli straordinari è a tuo rischio. Verifica sempre i risultati.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="fas fa-bug"></i> Malfunzionamenti</h4>
+                        <p>Non garantiamo il funzionamento perfetto su tutti i dispositivi e configurazioni.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="fas fa-exclamation-circle"></i> Danni Indiretti</h4>
+                        <p>Non siamo responsabili per danni indiretti, perdite economiche o mancati guadagni.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><i class="fas fa-sync-alt"></i> 6. Aggiornamenti e Nuove Funzionalità</h2>
+                <h3>Aggiornamenti gratuiti:</h3>
+                <ul>
+                    <li><strong>Bug fix:</strong> Correzioni di errori fornite gratuitamente</li>
+                    <li><strong>Aggiornamenti di sicurezza:</strong> Patch di sicurezza prioritarie</li>
+                    <li><strong>Compatibilità:</strong> Adattamenti per nuove versioni Android</li>
+                </ul>
+                
+                <h3>Funzionalità future:</h3>
+                <ul>
+                    <li>Piccoli miglioramenti inclusi gratuitamente</li>
+                    <li>Nuove funzionalità saranno sempre gratuite</li>
+                    <li>Gli aggiornamenti sono forniti a nostra discrezione</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><i class="fas fa-times-circle"></i> 7. Cessazione del Servizio</h2>
+                <h3>Diritto di cessazione:</h3>
+                <p>Ci riserviamo il diritto di cessare lo sviluppo e il supporto dell'app in qualsiasi momento.</p>
+                
+                <h3>Modalità di cessazione:</h3>
+                <ul>
+                    <li><strong>Preavviso:</strong> 30 giorni di anticipo tramite aggiornamento app o email</li>
+                    <li><strong>Accesso:</strong> L'app continuerà a funzionare sui dispositivi dove è installata</li>
+                    <li><strong>Download:</strong> Potrebbero non essere più disponibili nuovi download</li>
+                    <li><strong>Dati locali:</strong> I tuoi dati locali rimangono di tua proprietà</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><i class="fas fa-ban"></i> 8. Violazioni e Sospensioni</h2>
+                <p>In caso di violazione di questi termini, ci riserviamo il diritto di:</p>
+                <ul>
+                    <li>Revocare immediatamente l'accesso all'app</li>
+                    <li>Segnalare comportamenti illegali alle autorità competenti</li>
+                    <li>Intraprendere azioni legali per danni subiti</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><i class="fas fa-gavel"></i> 9. Legge Applicabile e Foro Competente</h2>
+                <p>Questi Termini di Servizio sono regolati dalla <strong>legge italiana</strong>.</p>
+                <p>Per qualsiasi controversia, il foro competente è quello di <strong>Napoli, Italia</strong>.</p>
+            </div>
+
+            <div class="section">
+                <h2><i class="fas fa-edit"></i> 10. Modifiche ai Termini</h2>
+                <p>Questi termini possono essere modificati in qualsiasi momento. Le modifiche saranno comunicate tramite:</p>
+                <ul>
+                    <li>Aggiornamento di questa pagina web</li>
+                    <li>Notifica nell'app</li>
+                    <li>Email agli utenti registrati (se disponibile)</li>
+                </ul>
+                <p>Continuando a utilizzare l'app dopo le modifiche, accetti i nuovi termini.</p>
+            </div>
+
+            <div class="section">
+                <h2><i class="fas fa-envelope"></i> 11. Contatti</h2>
+                <p>Per qualsiasi domanda sui presenti Termini di Servizio:</p>
+                <div class="info-card">
+                    <h4>Contatta lo Sviluppatore</h4>
+                    <p><strong>Email:</strong> appdevmond@gmail.com<br>
+                    <strong>Oggetto:</strong> TERMINI SERVIZIO CALCOLO STRAORDINARIO</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3><i class="fas fa-check-circle"></i> Accettazione dei Termini</h3>
+                <p>Utilizzando l'app "Calcolo Straordinario", dichiari di aver letto, compreso e accettato integralmente questi Termini di Servizio.</p>
+                <p><strong>Data di accettazione:</strong> Dal momento del primo utilizzo dell'app</p>
+            </div>
+
+            <a href="https://r00kie7.github.io/calcolostraordinario/" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Torna alla Homepage
+            </a>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Antonio Rota - Calcolo Straordinario. Tutti i diritti riservati.</p>
+            <p>
+                <a href="https://r00kie7.github.io/calcolostraordinario/privacy-policy.html" style="color: white; opacity: 0.8;">Privacy Policy</a> | 
+                <a href="https://r00kie7.github.io/calcolostraordinario/terms-of-service.html" style="color: white; opacity: 0.8;">Termini di Servizio</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

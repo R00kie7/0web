@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guida Setup - Calcolo Straordinario</title>
+    <meta name="description" content="Guida completa per configurare Calcolo Straordinario al primo avvio. Setup in 4 passi per iniziare subito a tracciare orari e straordinari.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 2rem 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #f0f8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .nav a {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            font-size: 0.9rem;
+        }
+        
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            margin: 1rem 0;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            padding: 2rem;
+        }
+        
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+        
+        .step-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 6px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            border: 4px solid white;
+        }
+        
+        .step-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .required {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .optional {
+            background: linear-gradient(45deg, #27ae60, #229954);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .if-applicable {
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .config-example {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .config-example h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-family: inherit;
+        }
+        
+        .day-config {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .day-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .day-name {
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .day-hours {
+            font-size: 1.2rem;
+            color: #333;
+            margin-top: 0.5rem;
+        }
+        
+        .tip {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+        
+        .tip-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 1rem 0;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+            margin: 1rem 0;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .feature-list li:before {
+            content: '✓';
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .usage-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .example-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid #667eea;
+        }
+        
+        .example-card h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .action-card {
+            background: #667eea;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .action-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .action-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .day-config {
+                grid-template-columns: 1fr;
+            }
+            
+            .usage-examples {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-actions {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="hero">
+                <h1><i class="fas fa-cog"></i> Guida Setup Completa</h1>
+                <p>Configura Calcolo Straordinario in 5 minuti seguendo questa guida step-by-step</p>
+                <nav class="nav">
+                    <a href="index.html"><i class="fas fa-home"></i> Homepage</a>
+                    <a href="#step1"><i class="fas fa-clock"></i> Orario Lavoro</a>
+                    <a href="#step2"><i class="fas fa-cogs"></i> Opzioni Avanzate</a>
+                    <a href="#step3"><i class="fas fa-utensils"></i> Buono Pasto</a>
+                    <a href="#step4"><i class="fas fa-euro-sign"></i> Importo Straordinario</a>
+                    <a href="#step5"><i class="fas fa-trash-alt"></i> Gestione Dati</a>
+                    <a href="#advanced"><i class="fas fa-star"></i> Funzioni Avanzate</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="section">
+                <h2><i class="fas fa-rocket"></i> Prima di Iniziare</h2>
+                
+                <div class="tip">
+                    <i class="fas fa-lightbulb tip-icon"></i>
+                    <strong>Setup Consigliato:</strong> Segui l'ordine delle voci nel menu Impostazioni dell'app. Ogni sezione è numerata per guidarti nel processo ottimale.
+                </div>
+                
+                <div class="warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Importante:</strong> Solo il "Setup orario di lavoro" è obbligatorio. Tutte le altre configurazioni sono opzionali e possono essere aggiunte in seguito.
+                </div>
+            </section>
+
+            <section id="step1" class="section">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Setup Orario di Lavoro <span class="required">OBBLIGATORIO</span></h3>
+                    
+                    <p><strong>Cosa fa:</strong> Definisce le ore contrattuali per ogni giorno della settimana. Essenziale per calcolare correttamente straordinari e ore mancanti.</p>
+                    
+                    <div class="config-example">
+                        <h4>Esempio Configurazione Tipica:</h4>
+                        <div class="day-config">
+                            <div class="day-item">
+                                <div class="day-name">Lunedì</div>
+                                <div class="day-hours">8:00 ore</div>
+                            </div>
+                            <div class="day-item">
+                                <div class="day-name">Martedì</div>
+                                <div class="day-hours">8:00 ore</div>
+                            </div>
+                            <div class="day-item">
+                                <div class="day-name">Mercoledì</div>
+                                <div class="day-hours">8:00 ore</div>
+                            </div>
+                            <div class="day-item">
+                                <div class="day-name">Giovedì</div>
+                                <div class="day-hours">8:00 ore</div>
+                            </div>
+                            <div class="day-item">
+                                <div class="day-name">Venerdì</div>
+                                <div class="day-hours">8:00 ore</div>
+                            </div>
+                            <div class="day-item">
+                                <div class="day-name">Sabato</div>
+                                <div class="day-hours">0:00 ore</div>
+                            </div>
+                            <div class="day-item">
+                                <div class="day-name">Domenica</div>
+                                <div class="day-hours">0:00 ore</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="usage-examples">
+                        <div class="example-card">
+                            <h4><i class="fas fa-briefcase"></i> Lavoro Standard</h4>
+                            <p><strong>40 ore/settimana:</strong> 8 ore Lun-Ven, 0 ore weekend</p>
+                            <p><strong>Risultato:</strong> Weekend sempre a riposo, straordinari calcolati oltre le 8 ore giornaliere</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-calendar-alt"></i> Part-time</h4>
+                            <p><strong>24 ore/settimana:</strong> 6 ore Lun-Mer-Ven, 3 ore Martedì, 0 ore altri giorni</p>
+                            <p><strong>Risultato:</strong> Calcoli proporzionali al tuo contratto</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-store"></i> Retail/Turni</h4>
+                            <p><strong>Orari variabili:</strong> Configura le ore standard, adatta giorno per giorno</p>
+                            <p><strong>Risultato:</strong> Flessibilità totale con base contrattuale</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tip">
+                        <i class="fas fa-lightbulb tip-icon"></i>
+                        <strong>Suggerimento:</strong> Puoi sempre modificare questi valori in seguito. Inizia con la configurazione più comune e aggiusta se necessario.
+                    </div>
+                </div>
+            </section>
+
+            <section id="step2" class="section">
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Opzioni Avanzate <span class="optional">OPZIONALE</span></h3>
+                    
+                    <p><strong>Quando usarle:</strong> Solo se hai esigenze contrattuali particolari. La maggior parte degli utenti può saltare questa sezione.</p>
+                    
+                    <h4><i class="fas fa-filter"></i> Filtra Orario Inizio</h4>
+                    <p><strong>Cosa fa:</strong> Se attivi questa opzione e imposti 09:00, anche se arrivi alle 08:30, l'app considera l'inizio alle 09:00.</p>
+                    <p><strong>Esempio pratico:</strong> Arrivi spesso in anticipo ma il contratto prevede inizio alle 9? Attiva per evitare calcoli di straordinari non dovuti.</p>
+                    
+                    <h4><i class="fas fa-clock"></i> Soglia Straordinario (Tolleranza)</h4>
+                    <p><strong>Cosa fa:</strong> I primi X minuti di straordinario non vengono conteggiati come tali.</p>
+                    
+                    <div class="config-example">
+                        <h4>Esempi di Soglie:</h4>
+                        <ul class="feature-list">
+                            <li><strong>15 minuti:</strong> Straordinario solo oltre 8:15 di lavoro</li>
+                            <li><strong>30 minuti:</strong> Straordinario solo oltre 8:30 di lavoro</li>
+                            <li><strong>0 minuti (default):</strong> Ogni minuto oltre le 8 ore è straordinario</li>
+                        </ul>
+                    </div>
+                
+                <h4><i class="fas fa-fire"></i> Calcola Tutto Straordinario <span class="optional">NUOVO v1.2.0</span></h4>
+                <p><strong>Cosa fa:</strong> Attivando questo switch nelle opzioni avanzate del giorno, TUTTO il tempo lavorato viene conteggiato come straordinario, ignorando le ore contrattuali.</p>
+                
+                <div class="config-example">
+                    <h4>Quando Usarlo:</h4>
+                    <ul class="feature-list">
+                        <li><strong>Festività:</strong> Lavoro in giorni festivi con retribuzione speciale</li>
+                        <li><strong>Chiamate urgenti:</strong> Interventi straordinari fuori orario contrattuale</li>
+                        <li><strong>Contratti speciali:</strong> Giornate a tariffa completamente maggiorata</li>
+                    </ul>
+                </div>
+                    <h3>Setup Buono Pasto <span class="if-applicable">SE APPLICABILE</span></h3>
+                    
+                    <p><strong>Quando configurarlo:</strong> Se il tuo contratto prevede buoni pasto legati alle ore lavorate.</p>
+                    
+                    <h4><i class="fas fa-toggle-on"></i> Attivazione</h4>
+                    <p>Attiva l'opzione "Buono pasto" per vedere il calcolo nei dettagli giornalieri.</p>
+                    
+                    <h4><i class="fas fa-hourglass-half"></i> Soglia Maturazione</h4>
+                    <p><strong>Tipicamente 6 ore:</strong> Se lavori 6 ore o più, maturi il diritto al buono pasto.</p>
+                    
+                    <div class="config-example">
+                        <h4>Configurazioni Comuni:</h4>
+                        <ul class="feature-list">
+                            <li><strong>6:00 ore:</strong> Standard per la maggior parte dei contratti</li>
+                            <li><strong>5:30 ore:</strong> Alcuni contratti particolari</li>
+                            <li><strong>7:00 ore:</strong> Contratti più restrittivi</li>
+                        </ul>
+                    </div>
+                    
+                    <h4><i class="fas fa-magic"></i> Funzionalità Automatiche</h4>
+                    <div class="usage-examples">
+                        <div class="example-card">
+                            <h4><i class="fas fa-clock"></i> Calcolo Pausa Automatico</h4>
+                            <p>Quando clicchi "Uscita", se hai diritto al buono pasto, l'app aggiunge automaticamente 30 minuti di pausa pranzo</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-eye"></i> Indicator Visivo</h4>
+                            <p>Nei dettagli giornalieri vedrai "Buono Pasto: Sì/No" basato sulle ore effettivamente lavorate</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tip">
+                        <i class="fas fa-lightbulb tip-icon"></i>
+                        <strong>Suggerimento:</strong> Puoi sempre modificare manualmente la pausa pranzo se l'automatismo non è adatto alla tua situazione.
+                    </div>
+                </div>
+            </section>
+
+            <section id="step4" class="section">
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Importo Straordinario <span class="optional">SE INTERESSATO</span></h3>
+                    
+                    <p><strong>Cosa fa:</strong> Calcola automaticamente quanto guadagni in più con gli straordinari.</p>
+                    
+                    <h4><i class="fas fa-calculator"></i> Come Calcolare la Tariffa</h4>
+                    <div class="config-example">
+                        <h4>Formula Tipica:</h4>
+                        <p><strong>Paga Oraria Base = Stipendio Mensile ÷ Ore Contrattuali Mensili</strong></p>
+                        <p><strong>Straordinario = Paga Oraria Base × Maggiorazione (es. 125% = 1.25)</strong></p>
+                        
+                        <h4>Esempio Pratico:</h4>
+                        <ul class="feature-list">
+                            <li>Stipendio mensile: €1,500</li>
+                            <li>Ore contrattuali mese: 173 ore (40h/settimana × 4.33 settimane)</li>
+                            <li>Paga oraria base: €1,500 ÷ 173 = €8.67/ora</li>
+                            <li>Straordinario al 125%: €8.67 × 1.25 = €10.84/ora</li>
+                        </ul>
+                    </div>
+                    
+                    <h4><i class="fas fa-chart-line"></i> Cosa Vedrai</h4>
+                    <div class="usage-examples">
+                        <div class="example-card">
+                            <h4><i class="fas fa-day"></i> Calcolo Giornaliero</h4>
+                            <p>Nei dettagli di ogni giorno: "Guadagno extra: €X.XX" basato sulle ore di straordinario effettive</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-calendar"></i> Totale Mensile</h4>
+                            <p>Nelle statistiche mensili: totale guadagni extra del mese per valutare l'impatto economico</p>
+                        </div>
+                    </div>
+                    
+                    <div class="warning">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>Nota:</strong> Questo è solo un calcolo indicativo. Consulta il tuo contratto per le maggiorazioni esatte e considera tasse/contributi.
+                    </div>
+                </div>
+            </section>
+
+            <section id="step5" class="section">
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <h3>Gestione Dati <span class="optional">SE NECESSARIO</span></h3>
+                    
+                    <p><strong>Cosa fa:</strong> Permette di eliminare selettivamente dati utente, impostazioni o fare un reset completo dell'app.</p>
+                    
+                    <h4><i class="fas fa-exclamation-triangle"></i> Quando Usare Questa Funzione</h4>
+                    <div class="usage-examples">
+                        <div class="example-card">
+                            <h4><i class="fas fa-redo"></i> Reset Completo</h4>
+                            <p>Quando vuoi ricominciare da zero con configurazioni fresche</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-calendar-times"></i> Eliminazione Dati</h4>
+                            <p>Per rimuovere solo orari e giorni lavorativi mantenendo le impostazioni</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-cogs"></i> Reset Configurazioni</h4>
+                            <p>Per cancellare solo le impostazioni mantenendo i dati storici</p>
+                        </div>
+                    </div>
+                    
+                    <h4><i class="fas fa-list"></i> Tipologie di Eliminazione</h4>
+                    <div class="config-example">
+                        <h4>Opzioni Disponibili:</h4>
+                        <ul class="feature-list">
+                            <li><strong>Solo Dati Utente:</strong> Elimina orari, pause pranzo, giorni lavorativi, obiettivi mensili</li>
+                            <li><strong>Solo Impostazioni App:</strong> Cancella tema, lingua, preferenze, configurazioni orari lavoro</li>
+                            <li><strong>Tutti i Dati:</strong> Reset completo - elimina tutto e ripristina l'app alle condizioni iniziali</li>
+                        </ul>
+                    </div>
+                    
+                    <h4><i class="fas fa-shield-alt"></i> Misure di Sicurezza</h4>
+                    <div class="usage-examples">
+                        <div class="example-card">
+                            <h4><i class="fas fa-backup"></i> Raccomandazione Backup</h4>
+                            <p>L'app suggerisce sempre di creare un backup prima dell'eliminazione</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-hand-paper"></i> Conferma Obbligatoria</h4>
+                            <p>Due passaggi di conferma per prevenire eliminazioni accidentali</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-undo"></i> Azione Irreversibile</h4>
+                            <p>L'operazione non può essere annullata - assicurati di avere un backup</p>
+                        </div>
+                    </div>
+                    
+                    <div class="warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <strong>ATTENZIONE:</strong> Questa operazione è irreversibile! Crea sempre un backup prima di eliminare dati. Dopo l'eliminazione sarà necessario riavviare l'app.
+                    </div>
+                    
+                    <div class="tip">
+                        <i class="fas fa-lightbulb tip-icon"></i>
+                        <strong>Suggerimento:</strong> Prima di eliminare, vai in "Gestione Backup" e crea un backup unificato. Potrai ripristinare selettivamente i dati in futuro.
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fas fa-rocket"></i> Dopo il Setup: Come Usare l'App</h2>
+                
+                <div class="quick-actions">
+                    <div class="action-card">
+                        <div class="action-icon"><i class="fas fa-rocket"></i></div>
+                        <h4>🆕 Pulsanti Fluttuanti Rapidi</h4>
+                        <p><strong>Timbratura Ultra-Rapida:</strong> Pulsanti sempre visibili nella home per timbrare con un tap! Registra Entrata/Uscita e Pausa Pranzo istantaneamente. Gestione automatica turni notturni inclusa.</p>
+                    </div>
+                    
+                    <div class="action-card">
+                        <div class="action-icon"><i class="fas fa-play"></i></div>
+                        <h4>Registrazione Entrata/Uscita</h4>
+                        <p>Un click su "Entrata/Uscita" imposta l'ora corrente. Secondo click per modificare manualmente. Oppure usa i pulsanti fluttuanti per timbratura istantanea!</p>
+                    </div>
+                    
+                    <div class="action-card">
+                        <div class="action-icon"><i class="fas fa-utensils"></i></div>
+                        <h4>Pausa Pranzo</h4>
+                        <p>La pausa pranzo viene impostata automaticamente a 30 minuti quando registri solo un'uscita. Puoi modificare durata e orari manualmente.</p>
+                    </div>
+                    
+                    <div class="action-card">
+                        <div class="action-icon"><i class="fas fa-calendar-plus"></i></div>
+                        <h4>Uscita Giorno Successivo</h4>
+                        <p>Attiva lo switch "Uscita Giorno Successivo" quando l'uscita avviene dopo la mezzanotte per calcoli corretti degli straordinari.</p>
+                    </div>
+                    
+                    <div class="action-card">
+                        <div class="action-icon"><i class="fas fa-umbrella-beach"></i></div>
+                        <h4>🆕 Sistema Ferie Avanzato v1.2.0</h4>
+                        <p><strong>Gestione Completa:</strong> Vai in Impostazioni → Tipi Ferie per creare e gestire permessi personalizzati. Tipi predefiniti: matrimonio (15gg), permessi brevi, ferie ordinarie, anno precedente. Statistiche automatiche per anno/mese con calcolo dinamico giorni/ore usati!</p>
+                    </div>
+                    
+                    <div class="action-card">
+                        <div class="action-icon"><i class="fas fa-copy"></i></div>
+                        <h4>Copia e Incolla</h4>
+                        <p>Orari fissi? Copia un giorno e incollalo sui successivi. Setup settimana in 30 secondi!</p>
+                    </div>
+                    
+                    <div class="action-card">
+                        <div class="action-icon"><i class="fas fa-sticky-note"></i></div>
+                        <h4>Note e Permessi</h4>
+                        <p>Aggiungi note per ferie, malattie, permessi. Esclusione orario per giorni speciali.</p>
+                    </div>
+                    
+                    <div class="action-card">
+                        <div class="action-icon"><i class="fas fa-paperclip"></i></div>
+                        <h4>Allegati e Foto</h4>
+                        <p>Aggiungi foto, documenti o ricevute ai tuoi giorni lavorativi. Tutto salvato localmente.</p>
+                    </div>
+                    
+                    <div class="action-card">
+                        <div class="action-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h4>Smart Backup</h4>
+                        <p>Sistema intelligente di backup all'apertura app quando necessario. Condividi su Google Drive con un tap!</p>
+                    </div>
+                </div>
+                
+                <div class="tip">
+                    <i class="fas fa-star tip-icon"></i>
+                    <strong>Consiglio Pro:</strong> Usa l'app tutti i giorni per una settimana per abituarti. Poi sfrutta le funzioni di copia per velocizzare l'inserimento di routine!
+                </div>
+                
+                <div class="success">
+                    <i class="fas fa-check-circle"></i>
+                    <strong>Setup Completato!</strong> Sei pronto per tracciare i tuoi orari con la massima semplicità. L'app calcolerà tutto automaticamente basandosi sulle tue configurazioni.
+                </div>
+            </section>
+
+            <section id="advanced" class="section">
+                <h2><i class="fas fa-star"></i> Funzioni Avanzate</h2>
+                
+                <div class="step-card">
+                    <div class="step-number">🏖️</div>
+                    <h3>Sistema Ferie Avanzato <span class="optional">🆕 NUOVO v1.2.0</span></h3>
+                    
+                    <p><strong>Cosa fa:</strong> Gestione completa di ferie e permessi con tipi personalizzabili, statistiche automatiche e protezione tipi speciali.</p>
+                    
+                    <h4><i class="fas fa-list"></i> Accesso alla Funzione</h4>
+                    <div class="config-example">
+                        <p><strong>Percorso:</strong> Vai nella schermata principale → Tab "Statistiche" → Scorri verso il basso fino alla sezione "Statistiche Ferie"</p>
+                        <p><strong>Gestione Tipi:</strong> Impostazioni → Gestione Tipi Ferie</p>
+                    </div>
+                    
+                    <h4><i class="fas fa-star"></i> Tipi Ferie Predefiniti</h4>
+                    <div class="usage-examples">
+                        <div class="example-card">
+                            <h4><i class="fas fa-ring"></i> Congedo Matrimoniale</h4>
+                            <p><strong>Configurazione:</strong> 15 giorni, uso unico, periodo annuale</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-clock"></i> Permessi Brevi</h4>
+                            <p><strong>Configurazione:</strong> Periodo mensile, personalizzabile in ore</p>
+                            <p><strong>Ideale per:</strong> ROL, permessi orari, recuperi</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-infinity"></i> Ferie Generiche</h4>
+                            <p><strong>Configurazione:</strong> Senza limite massimo, traccia solo utilizzo</p>
+                            <p>Tutte le ferie inserite prima dell'aggiornamento 1.2.0 saranno indicate come Ferie generiche e saranno conteggiate a parte</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-calendar-alt"></i> Ferie Ordinarie</h4>
+                            <p><strong>Configurazione:</strong> Periodo annuale, totale personalizzabile</p>
+                            <p><strong>Standard:</strong> Il tipo più comune per le ferie contrattuali</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-history"></i> Ferie Anno Precedente</h4>
+                            <p><strong>Configurazione:</strong> Per ferie residue dall'anno scorso</p>
+                            <p><strong>Protezione:</strong> Non cancellabile, gestione separata dal monte ore corrente</p>
+                        </div>
+                    </div>
+                    
+                    <h4><i class="fas fa-plus-circle"></i> Creare Tipi Personalizzati</h4>
+                    <div class="config-example">
+                        <h4>Opzioni Disponibili:</h4>
+                        <ul class="feature-list">
+                            <li><strong>Nome e Colore:</strong> Personalizza aspetto per identificazione rapida</li>
+                            <li><strong>Totale Disponibile:</strong> Imposta giorni o ore contrattuali</li>
+                            <li><strong>Periodo:</strong> Annuale o Mensile (reset automatico)</li>
+                            <li><strong>Unità:</strong> Giorni o Ore (per permessi frazionati)</li>
+                            <li><strong>Tipo Uso Unico:</strong> Per permessi speciali tipo matrimonio</li>
+                        </ul>
+                    </div>
+                    
+                    <h4><i class="fas fa-chart-line"></i> Statistiche Dinamiche</h4>
+                    <div class="usage-examples">
+                        <div class="example-card">
+                            <h4><i class="fas fa-calendar-check"></i> Calcolo Automatico</h4>
+                            <p>Le statistiche si aggiornano automaticamente in base al periodo visualizzato (mese/anno)</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-history"></i> Storico Accurato</h4>
+                            <p>Visualizzi Novembre 2024? Vedi i dati di Novembre 2024, non quelli correnti!</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-sync-alt"></i> Reset Automatico</h4>
+                            <p>Tipi mensili si resettano ogni mese, annuali ogni anno. Zero manutenzione manuale!</p>
+                        </div>
+                    </div>
+                    
+                    <h4><i class="fas fa-user-check"></i> Utilizzo dei Tipi Ferie</h4>
+                    <div class="config-example">
+                        <h4>Come Registrare una Ferie/Permesso:</h4>
+                        <ol>
+                            <li>Apri i dettagli del giorno da segnare come ferie</li>
+                            <li>Attiva lo switch "Ferie/Vacanza" (icona aereo)</li>
+                            <li>Seleziona il tipo di ferie dal menu a tendina</li>
+                            <li>Per permessi a ore: specifica le ore nel campo dedicato</li>
+                            <li>Salva: le statistiche si aggiorneranno automaticamente!</li>
+                        </ol>
+                    </div>
+                    
+                    <h4><i class="fas fa-shield-alt"></i> Protezioni e Sicurezze</h4>
+                    <div class="usage-examples">
+                        <div class="example-card">
+                            <h4><i class="fas fa-lock"></i> Tipi Non Cancellabili</h4>
+                            <p>Matrimonio, permessi brevi, ferie generiche, ordinarie e anno precedente sono protetti</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-camera"></i> Snapshot Storico</h4>
+                            <p>Ogni giorno salva nome e colore del tipo ferie. Anche se lo cancelli, lo storico rimane!</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-database"></i> Backup Completo</h4>
+                            <p>Tutti i tipi personalizzati vengono salvati nei backup e negli export PDF/CSV</p>
+                        </div>
+                    </div>
+                    
+                    <div class="success">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Esempi Pratici:</strong> ROL mensili di 2 ore, 104 ore legge 104 annuali, congedo parentale 6 mesi, permessi studio 150 ore/anno. Tutto personalizzabile!
+                    </div>
+                    
+                    <div class="tip">
+                        <i class="fas fa-lightbulb tip-icon"></i>
+                        <strong>Consiglio Pro:</strong> Crea un tipo per ogni categoria contrattuale. Le statistiche ti mostreranno sempre quanto hai usato e quanto resta!
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">📎</div>
+                    <h3>Sistema Allegati <span class="optional">NUOVO</span></h3>
+                    
+                    <p><strong>Cosa fa:</strong> Aggiungi foto, documenti e file ai tuoi giorni lavorativi per una documentazione completa.</p>
+                    
+                    <div class="usage-examples">
+                        <div class="example-card">
+                            <h4><i class="fas fa-camera"></i> Foto Dirette</h4>
+                            <p>Scatta foto direttamente dall'app: badge entrata, documenti, ricevute spese di lavoro</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-images"></i> Galleria</h4>
+                            <p>Seleziona immagini dalla galleria del dispositivo per allegare screenshot o foto esistenti</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-file"></i> Documenti</h4>
+                            <p>Allega PDF, DOC, TXT e altri documenti per tenere tutto organizzato in un posto</p>
+                        </div>
+                    </div>
+                    
+                    <div class="config-example">
+                        <h4>Esempi d'Uso Pratici:</h4>
+                        <ul class="feature-list">
+                            <li><strong>Badge Entrata:</strong> Foto del timbraggio per verifiche future</li>
+                            <li><strong>Trasferte:</strong> Ricevute carburante, pedaggi, parcheggi</li>
+                            <li><strong>Documenti Lavoro:</strong> Contratti, autorizzazioni, permessi</li>
+                            <li><strong>Note Visive:</strong> Foto del posto di lavoro, attrezzature, situazioni particolari</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip">
+                        <i class="fas fa-shield-alt tip-icon"></i>
+                        <strong>Privacy Garantita:</strong> Tutti gli allegati rimangono sul tuo dispositivo. Nessun upload automatico su server esterni.
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">🔄</div>
+                    <h3>Sistema Backup Unificato <span class="optional">AGGIORNATO</span></h3>
+                    
+                    <p><strong>Cosa fa:</strong> Sistema intelligente di backup per proteggere completamente i tuoi dati con ripristino selettivo.</p>
+                    
+                    <div class="config-example">
+                        <h4>Come Funziona:</h4>
+                        <ul class="feature-list">
+                            <li><strong>Smart Backup:</strong> Backup automatico all'apertura app quando necessario</li>
+                            <li><strong>Backup Unificato:</strong> Un solo file contiene tutti i dati separati internamente</li>
+                            <li><strong>Ripristino Selettivo:</strong> Scegli cosa importare: Solo Impostazioni, Solo Dati o Tutto</li>
+                            <li><strong>Retention:</strong> Mantiene automaticamente gli ultimi 7 backup</li>
+                            <li><strong>Condivisione Google Drive:</strong> Condividi backup via tasto dedicato per ogni backup</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="usage-examples">
+                        <div class="example-card">
+                            <h4><i class="fas fa-brain"></i> Smart Backup</h4>
+                            <p>Sistema intelligente che crea backup solo quando necessario all'apertura dell'app. Più efficiente del timer.</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-archive"></i> Backup Unificato</h4>
+                            <p>Un file JSON che contiene tutto: configurazioni + dati lavorativi + allegati. Formato semplice e sicuro.</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-filter"></i> Ripristino Selettivo</h4>
+                            <p>All'importazione scegli: Solo Impostazioni (nuovo telefono), Solo Dati (ripristino) o Tutto insieme.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="success">
+                        <i class="fas fa-cloud"></i>
+                        <strong>Google Drive Integration:</strong> Usa il tasto "Condividi" su ogni backup per salvarlo su Google Drive. Poi importalo su altro dispositivo!
+                    </div>
+                    
+                    <h4><i class="fas fa-mobile-alt"></i> Come Trasferire Dati su Nuovo Telefono</h4>
+                    <div class="config-example">
+                        <h4>Procedura Completa:</h4>
+                        <ol>
+                            <li><strong>Vecchio telefono:</strong> Vai in Impostazioni → Gestione Backup</li>
+                            <li><strong>Crea backup:</strong> Premi "Crea Backup" (file unificato)</li>
+                            <li><strong>Condividi:</strong> Premi "Condividi" sul backup creato → Google Drive</li>
+                            <li><strong>Nuovo telefono:</strong> Installa app e vai in Impostazioni → Gestione Backup</li>
+                            <li><strong>Importa:</strong> Premi "Importa" → Seleziona il file da Google Drive</li>
+                            <li><strong>Scegli dati:</strong> Seleziona "Tutto" per trasferimento completo</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="warning">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>Configurazione:</strong> Vai in Impostazioni → Gestione Backup → Abilita "Smart Backup" per attivare la protezione automatica intelligente.
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">📊</div>
+                    <h3>Export Avanzato <span class="optional">MIGLIORATO</span></h3>
+                    
+                    <p><strong>Cosa fa:</strong> Esportazione dati potenziata con più formati e opzioni personalizzate.</p>
+                    
+                    <div class="usage-examples">
+                        <div class="example-card">
+                            <h4><i class="fas fa-file-pdf"></i> Export PDF</h4>
+                            <p>Report mensili professionali con calcoli dettagliati, grafici e statistiche complete</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-file-csv"></i> Export CSV</h4>
+                            <p>Dati grezzi per Excel/Calc con range personalizzabile per analisi approfondite</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-share"></i> Condivisione</h4>
+                            <p>Invio diretto via email, cloud, WhatsApp per condividere con datori di lavoro</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">🧮</div>
+                    <h3>Calcolatrice Oraria <span class="optional">NUOVO v1.2.0</span></h3>
+                    
+                    <p><strong>Cosa fa:</strong> Nuova tab dedicata per convertimenti rapidi tra formato decimale e ore:minuti.</p>
+                    
+                    <div class="usage-examples">
+                        <div class="example-card">
+                            <h4><i class="fas fa-calculator"></i> Conversione Decimale</h4>
+                            <p>Converti 8.75 ore in 8h 45m o viceversa con un tap. Perfetto per fogli presenza e calcoli veloci</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-clock"></i> Formato Standard</h4>
+                            <p>Passa da formato 08:45 a decimale 8.75 istantaneamente. Utile per sistemi di timbratura aziendali</p>
+                        </div>
+                        
+                        <div class="example-card">
+                            <h4><i class="fas fa-bolt"></i> Calcoli Rapidi</h4>
+                            <p>Somme, sottrazioni e verifiche ore lavorate senza aprire altre app. Tutto integrato!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tip">
+                        <i class="fas fa-lightbulb tip-icon"></i>
+                        <strong>Accesso Rapido:</strong> Trovi la calcolatrice nella tab dedicata della schermata principale. Sempre a portata di tap!
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">🎯</div>
+                    <h3>Obiettivi Mensili <span class="optional">NUOVO</span></h3>
+                    
+                    <p><strong>Cosa fa:</strong> Imposta obiettivi di ore mensili e monitora il progresso in tempo reale.</p>
+                    
+                    <div class="config-example">
+                        <h4>Come Impostare:</h4>
+                        <ul class="feature-list">
+                            <li>Tocca il pulsante "Obiettivo" nella schermata principale</li>
+                            <li>Imposta ore e minuti target per il mese</li>
+                            <li>Monitora il progresso con barra visuale</li>
+                            <li>Ricevi feedback su ore rimanenti o raggiunte</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tip">
+                        <i class="fas fa-bullseye tip-icon"></i>
+                        <strong>Strategia:</strong> Usa gli obiettivi per programmare ferie, permessi e gestire il carico di lavoro mensile.
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fas fa-question-circle"></i> Problemi Comuni e Soluzioni</h2>
+                
+                <div class="usage-examples">
+                    <div class="example-card">
+                        <h4><i class="fas fa-exclamation-triangle"></i> "Non vedo gli straordinari"</h4>
+                        <p><strong>Causa:</strong> Orario di lavoro non configurato</p>
+                        <p><strong>Soluzione:</strong> Vai in Impostazioni → Setup orario di lavoro e configura le ore contrattuali</p>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h4><i class="fas fa-utensils"></i> "Pausa pranzo sbagliata"</h4>
+                        <p><strong>Causa:</strong> Automatismo buono pasto attivo</p>
+                        <p><strong>Soluzione:</strong> Modifica manualmente la pausa o disattiva l'automatismo dalle impostazioni</p>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h4><i class="fas fa-clock"></i> "Straordinari iniziano troppo presto"</h4>
+                        <p><strong>Causa:</strong> Soglia straordinario non configurata</p>
+                        <p><strong>Soluzione:</strong> Imposta tolleranza in Opzioni Avanzate (es. 15 minuti)</p>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h4><i class="fas fa-shield-alt"></i> "Come funziona il backup intelligente?"</h4>
+                        <p><strong>Risposta:</strong> Si attiva dalle Impostazioni → Gestione Backup → Smart Backup</p>
+                        <p><strong>Dettagli:</strong> Backup automatico all'apertura app quando necessario, mantiene 7 copie, tutto locale</p>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h4><i class="fas fa-paperclip"></i> "Gli allegati rallentano l'app?"</h4>
+                        <p><strong>Risposta:</strong> No, sono ottimizzati per le performance</p>
+                        <p><strong>Dettagli:</strong> Gestione intelligente memoria, compressione automatica, caricamento lazy</p>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h4><i class="fas fa-cloud"></i> "I miei dati sono al sicuro?"</h4>
+                        <p><strong>Risposta:</strong> Sì, tutto rimane sul tuo dispositivo</p>
+                        <p><strong>Dettagli:</strong> Nessun server esterno, tu controlli backup e condivisioni, privacy totale</p>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h4><i class="fas fa-trash-alt"></i> "Come posso resettare l'app?"</h4>
+                        <p><strong>Risposta:</strong> Vai in Impostazioni → Gestione Dati → Elimina tutti i dati</p>
+                        <p><strong>Attenzione:</strong> Crea sempre un backup prima! L'operazione è irreversibile e richiede riavvio app</p>
+                    </div>
+                    
+                    <div class="example-card">
+                        <h4><i class="fas fa-undo"></i> "Ho eliminato i dati per sbaglio!"</h4>
+                        <p><strong>Soluzione:</strong> Ripristina dall'ultimo backup se disponibile</p>
+                        <p><strong>Prevenzione:</strong> Attiva Smart Backup per backup automatici quotidiani</p>
+                    </div>
+                </div>
+                
+                <div class="success">
+                    <i class="fas fa-heart"></i>
+                    <strong>Grazie per aver scelto Calcolo Straordinario!</strong> L'app continua a evolversi grazie ai feedback degli utenti. Contattaci per suggerimenti!
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><i class="fas fa-home"></i> <a href="index.html" style="color: #ccc;">Torna alla Homepage</a></p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:appdevmond@gmail.com" style="color: #ccc;">Supporto: appdevmond@gmail.com</a></p>
+            <p>&copy; 2025 Calcolo Straordinario - Guida Setup Completa</p>
+        </div>
+    </footer>
+</body>
+</html>
