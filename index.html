@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=\"description\" content=\"0web - Distingui facilmente la lettera O dal numero 0. Tool gratuito online per evitare confusione tra O e zero in password, username e codici. Supporta 5 lingue.\">
+    <meta name=\"keywords\" content=\"O vs 0, distinguere O da zero, confusione O e 0, username password, tool online, differenziazione caratteri\">
+    <meta name=\"author\" content=\"Antonio Rota\">
+    <meta name=\"robots\" content=\"index, follow\">
+    <meta name=\"language\" content=\"Italian, English, Spanish, French, German\">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property=\"og:type\" content=\"website\">
+    <meta property=\"og:url\" content=\"https://0web.com\">
+    <meta property=\"og:title\" content=\"0web - Distingui O da 0\">
+    <meta property=\"og:description\" content=\"Tool gratuito per distinguere la lettera O dal numero 0 in username, password e codici.\">
+    <meta property=\"og:site_name\" content=\"0web\">
+    
+    <!-- Twitter Card -->
+    <meta name=\"twitter:card\" content=\"summary_large_image\">
+    <meta name=\"twitter:title\" content=\"0web - Distingui O da 0\">
+    <meta name=\"twitter:description\" content=\"Tool gratuito per evitare confusione tra O e zero.\">
+    
+    <!-- Canonical URL -->
+    <link rel=\"canonical\" href=\"https://0web.com\">
+    
+    <!-- Hreflang for multilingual support -->
+    <link rel=\"alternate\" hreflang=\"it\" href=\"https://0web.com\">
+    <link rel=\"alternate\" hreflang=\"en\" href=\"https://0web.com/en\">
+    <link rel=\"alternate\" hreflang=\"es\" href=\"https://0web.com/es\">
+    <link rel=\"alternate\" hreflang=\"fr\" href=\"https://0web.com/fr\">
+    <link rel=\"alternate\" hreflang=\"de\" href=\"https://0web.com/de\">
+    <link rel=\"alternate\" hreflang=\"x-default\" href=\"https://0web.com\">
+    
+    <!-- Additional SEO -->
+    <meta name=\"theme-color\" content=\"#3b82f6\">
+    <meta name=\"msapplication-TileColor\" content=\"#3b82f6\">
+    
+    <title>0web - Distingui O da 0 | Tool Gratuito Online</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <span class="logo-zero">0</span><span class="logo-text">web</span>
+            </div>
+            <nav>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="language-selector">
+                    <button class="lang-btn" id="langBtn">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                        <span id="currentLang">IT</span>
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button data-lang="it">🇮🇹 Italiano</button>
+                        <button data-lang="en">🇬🇧 English</button>
+                        <button data-lang="es">🇪🇸 Español</button>
+                        <button data-lang="fr">🇫🇷 Français</button>
+                        <button data-lang="de">🇩🇪 Deutsch</button>
+                    </div>
+                </div>
+                <button class="projects-btn" id="projectsBtn">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <span data-i18n="otherProjects">Altri Progetti</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <section class="hero">
+            <h1 data-i18n="title">Distingui O da 0</h1>
+            <p class="subtitle" data-i18n="subtitle">
+                Non confondere più la lettera O con il numero 0. Inserisci il tuo testo e visualizza immediatamente la differenza.
+            </p>
+        </section>
+
+        <section class="tool-section">
+            <div class="input-section">
+                <label for="textInput" data-i18n="inputLabel">Inserisci il tuo testo:</label>
+                <textarea 
+                    id="textInput" 
+                    placeholder="Inserisci qui il tuo username o password..."
+                    data-i18n-placeholder="inputPlaceholder"
+                ></textarea>
+                <div class="stats">
+                    <span class="stat">
+                        <span class="stat-label" data-i18n="letterO">Lettere O:</span>
+                        <span class="stat-value" id="countO">0</span>
+                    </span>
+                    <span class="stat">
+                        <span class="stat-label" data-i18n="numberZero">Numeri 0:</span>
+                        <span class="stat-value" id="countZero">0</span>
+                    </span>
+                    <span class="stat">
+                        <span class="stat-label" data-i18n="totalChars">Caratteri totali:</span>
+                        <span class="stat-value" id="countTotal">0</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <h3 data-i18n="outputTitle">Testo con differenziazione:</h3>
+                <div class="output-display" id="outputDisplay">
+                    <div class="empty-state" data-i18n="emptyState">
+                        Il tuo testo apparirà qui con le differenze evidenziate...
+                    </div>
+                </div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <span class="legend-box letter-o">O</span>
+                        <span data-i18n="legendLetterO">Lettera O (blu)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-box number-zero">0</span>
+                        <span data-i18n="legendNumberZero">Numero 0 (arancione)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Projects Modal -->
+    <div class="modal" id="projectsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-i18n="myProjects">I Miei Progetti</h2>
+                <button class="close-btn" id="closeModal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M18 6L6 18M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="project-card">
+                    <div class="project-icon">0</div>
+                    <h3>0web</h3>
+                    <p data-i18n="project0web">Distingui facilmente la lettera O dal numero 0</p>
+                    <span class="badge active" data-i18n="currentProject">Progetto Corrente</span>
+                </div>
+                <a href="https://r00kie7.github.io/calcolostraordinario/" target="_blank" rel="noopener noreferrer" class="project-card">
+                    <div class="project-icon">⏱️</div>
+                    <h3 data-i18n="projectCalcoloTitle">Calcolo Straordinario</h3>
+                    <p data-i18n="projectCalcoloDesc">Calcola facilmente le ore di lavoro straordinario</p>
+                    <span class="badge" data-i18n="viewProject">Visita Progetto</span>
+                </a>
+                <div class="project-card coming-soon">
+                    <div class="project-icon">?</div>
+                    <h3 data-i18n="comingSoon">Prossimamente</h3>
+                    <p data-i18n="comingSoonText">Altri progetti in arrivo...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; Antonio Rota 2026 0web. <span data-i18n="footerText">Tutti i diritti riservati.</span></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
